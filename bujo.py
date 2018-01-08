@@ -5,6 +5,9 @@ import time
 import os
 
 TASK_DATABASE='tasks.json'
+FOR_ONE_SECOND=1
+SECONDS_IN_A_MINUTE=60
+POMODORO_MINUTES=25
 
 @click.group()
 def cli():
@@ -40,7 +43,7 @@ def pomodoro(task_id):
   tasks = TinyDB(TASK_DATABASE)
   task = tasks.get(doc_id=int(task_id))
   click.echo("Starting pomodoro on task: {}".format(task['text']))
-  for i in tqdm(range(1500)):
-    time.sleep(0.1)
+  for i in tqdm(range(POMODORO_MINUTES * SECONDS_IN_A_MINUTE)):
+    time.sleep(FOR_ONE_SECOND)
   os.system('terminal-notifier -title "Pomodoro Done" -message "'+task['text'] +'" -sound default')
 
