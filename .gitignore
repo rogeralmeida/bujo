@@ -6,3 +6,4 @@ __pycache__/
 bujo.egg-info/
 pip-selfcheck.json
 tasks.json
+man/
